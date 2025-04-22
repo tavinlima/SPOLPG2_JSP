@@ -1,3 +1,4 @@
+/build/
 /target/
 *.log
 *.class
@@ -6,4 +7,3 @@
 /.classpath
 /.idea/
 /*.iml
-/build
