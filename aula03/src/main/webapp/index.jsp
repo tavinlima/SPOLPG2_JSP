@@ -7,25 +7,60 @@
 <title>Aula 03</title>
 </head>
 <body>
+	<h2>5. Exercício: Personalização de Cor com Sessão Descrição: 
+	<br>• Crie uma página JSP com um formulário para o usuário escolher a cor de
+		fundo do site. 
+	<br>• Salve essa cor escolhida na sessão. 
+	<br>• A cada vez que a página for carregada, pegue a cor salva na sessão e aplique como
+		background da página.</h2>
+		
+		<%
+		String fundoEscolhido = request.getParameter("backColor");
+			
+		if (fundoEscolhido != null) session.setAttribute("backgroundColor", fundoEscolhido);
+		%>
+		
+		<style>
+		body {
+		background-color: <%= session.getAttribute("backgroundColor") %>}
+		</style>
+		
+		<form method="get">
+		<label> Escolha a cor de fundo do site: 
+		<input name="backColor" type="text">
+		</label>
+		
+		<button>Enviar</button>
+		</form>
+
 	<h2>8. Explique a função dos objetos implícitos request, response,
 		session e out em uma página JSP. Dê um exemplo prático de utilização
 		para cada um deles.</h2>
-	<p><strong>request</strong> - Representa uma requisição que o cliente envia. Permite
-		que possamos acessar o conteúdo enviado em um formulário por exemplo.</p>
+	<p>
+		<strong>request</strong> - Representa uma requisição que o cliente
+		envia. Permite que possamos acessar o conteúdo enviado em um
+		formulário por exemplo.
+	</p>
 	<p>String nome = request.getParameter("nomeEnviado");</p>
 
-	<p><strong>response</strong> - É a resposta que será enviada para o cliente da
-		requisição que ele fez. Permite por exemplo que redirecionemos o
-		cliente para outra página após enviar o formulário</p>
+	<p>
+		<strong>response</strong> - É a resposta que será enviada para o
+		cliente da requisição que ele fez. Permite por exemplo que
+		redirecionemos o cliente para outra página após enviar o formulário
+	</p>
 	<p>response.sendRedirect("acertou.jsp")</p>
 
-	<p><strong>session</strong> - Os dados da sessão do usuário - armazenando os dados
-		das interações do usuário com a tela temporariamente, como o nome de
-		quem está acessando.</p>
+	<p>
+		<strong>session</strong> - Os dados da sessão do usuário - armazenando
+		os dados das interações do usuário com a tela temporariamente, como o
+		nome de quem está acessando.
+	</p>
 	<p>session.setAttribute("nome", nomeQueVeioDoForm)</p>
 
-	<p><strong>out</strong> - Utilizado para mostrar um texto na página. Como um texto
-		de boas vindas ao entrar na página.</p>
+	<p>
+		<strong>out</strong> - Utilizado para mostrar um texto na página. Como
+		um texto de boas vindas ao entrar na página.
+	</p>
 	<p>out.print("Bem vindo!")</p>
 
 
